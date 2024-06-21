@@ -1,72 +1,104 @@
-// const tinderUser = new Object()
-const tinderUser = {}
-
-tinderUser.id = "123abc"
-tinderUser.name = "Sammy"
-tinderUser.isLoggedIn = false
-
-// console.log(tinderUser);
-
-const regularUser = {
-    email: "some@gmail.com",
-    fullname: {
-        userfullname: {
-            firstname: "hitesh",
-            lastname: "choudhary"
-        }
-    }
-}
-
-// console.log(regularUser.fullname.userfullname.firstname);
+// object combining
 
 const obj1 = {1: "a", 2: "b"}
-const obj2 = {3: "a", 4: "b"}
-const obj4 = {5: "a", 6: "b"}
+const obj2 = {3: "c", 4: "d"}
+const obj4 = {5: "e", 6: "f"}
 
-// const obj3 = { obj1, obj2 }
-// const obj3 = Object.assign({}, obj1, obj2, obj4)
+// method1
+const obj5 = Object.assign({},obj1,obj2,obj4)
 
-const obj3 = {...obj1, ...obj2}
-// console.log(obj3);
+// key use karun iterate karta yet ove the keys of the object , using the for in loop
 
-
-const users = [
-    {
-        id: 1,
-        email: "h@gmail.com"
-    },
-    {
-        id: 1,
-        email: "h@gmail.com"
-    },
-    {
-        id: 1,
-        email: "h@gmail.com"
-    },
-]
-
-users[1].email
-// console.log(tinderUser);
-
-// console.log(Object.keys(tinderUser));
-// console.log(Object.values(tinderUser));
-// console.log(Object.entries(tinderUser));
-
-// console.log(tinderUser.hasOwnProperty('isLoggedIn'));
-
-
-const course = {
-    coursename: "js in hindi",
-    price: "999",
-    courseInstructor: "hitesh"
+for (const key in obj5){
+    console.log(`the values are ${key}: ${obj5[key]}`)
 }
 
-// course.courseInstructor
+// method2
+// using the spreading method 
 
-const {courseInstructor: instructor} = course
+let obj6 = {...obj1,...obj2,...obj4}
+console.log("Method 2")
+for (const key in obj6){
+    console.log(`the values are ${key}: ${obj6[key]}`)
+}
 
-// console.log(courseInstructor);
-console.log(instructor);
+// Accessing the values in Objects 
+// from the DB we get the array of objetcs 
+let car = [
+    {
+        id: 1,
+        name: "BMW",
+        color: "Black"
+    },
+    {
+        id: 2,
+        name: "BMW1",
+        color: "Black"
+    },
+    {
+        id: 3,
+        name: "BMW2",
+        color: "Black"
+    }
+];
+
+// now to print the objects present in this array 
+// car[0]  ...1st element of array...it is object
+console.log("The id car is ", car[0].id);
+
+let temp_arr = [];
+for (const temp_obj of car) {
+    let temp_keys = Object.keys(temp_obj);
+    let values = Object.values(temp_obj);
+    
+    // Log the current temp_keys and values
+    console.log("Current keys:", temp_keys);
+    console.log("Current values:", values);
+
+    // Append to temp_arr
+    temp_arr = [...temp_arr, ...temp_keys, ...values];
+}
+
+// Log the final temp_arr
+console.log("Final temp_arr:", temp_arr);
+
+// for checking ki isss object me ye key present he ya anahi
+let obj_temp = {
+    id :21,
+    name:"xyz"
+}
+console.log(obj_temp.hasOwnProperty('email'))
+//falso
+
+// destructuring of values coming from Array, object 
+const userProfile = {
+    id: 101,
+    name: "John Doe",
+    email: "johndoe@example.com",
+    phone: "1-800-555-5555",
+    address: {
+        street: "123 Main St",
+        city: "Springfield",
+        zipcode: "12345"
+    }
+};
+
+// now to access the value of property of userProfile by 
+// method1...car.concat.lazy..and tired
+// userProfile.address
+// userProfile.id.....etc
+
+// method 2
+const {id}=userProfile;
+console.log("The id is: ",id)
+
+// you can change the name of key too 
+const {name:naav}=userProfile;
+console.log("The name is: ",naav)
+
+// this conept of destructuting is used in react toolbar.visible. insted of writng the PaymentResponse.name, props,id.toExponential.apply.etc etc 
+
+// also the API are nothing but the array , and objects, and theree intermix 
 
 // {
 //     "name": "hitesh",
@@ -79,4 +111,3 @@ console.log(instructor);
     {},
     {}
 ]
-

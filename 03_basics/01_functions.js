@@ -25,8 +25,7 @@ function addTwoNumbers(number1, number2){
 const result = addTwoNumbers(3, 5)
 
 // console.log("Result: ", result);
-
-
+// default parameter oveerides the argument semt by calling function 
 function loginUserMessage(username = "sam"){
     if(!username){
         console.log("PLease enter a username");

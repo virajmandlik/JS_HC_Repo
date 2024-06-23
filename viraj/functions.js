@@ -46,15 +46,27 @@
 // may values inde the tables 
 
 
-function abc (){
-    let a = "hello";
-    console.table(this.a)
-}
-abc();
+// function abc (){
+//     let a = "hello";
+//     console.table(this.a)
+// }
+// abc();
 
 // op 
 // undefined
 
 // you cannot use the this keyword inside the arrow function it return the undefined keyword 
+
+// ******************Arrow function ********************88
+// for returjngit he object youb need to pack it inside th eparentheisi 
+const temp = ()=>(
+    {
+        name:"Viraj",
+        id:21
+    }
+)
+
+console.log(temp())
+
 
 

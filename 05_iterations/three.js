@@ -38,3 +38,15 @@ const myObject = {
 //     console.log(key, ':-', value);
     
 // }
+
+let arrtemp = ['viraj','is ','good','boy']
+
+for(const i in arrtemp){
+    // console.log(i)
+}
+
+// output:-
+// viraj
+// VM111:4 is 
+// VM111:4 good
+// VM111:4 boy

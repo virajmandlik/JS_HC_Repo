@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Web Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    clear: both;
+}
+    </style>
+</head>
+<body>
+    <header>
+       
+    </header>
+    <main>
+       <ul class="language">
+        <li>Javascript</li>
+       </ul>
+
+       <!-- instead of creating many append values we simply crate the function for adding the elemtns  -->
+
+       <script>
+        function addLang(lang){
+            let li = document.createElement('li')
+            li.innerHTML = `${lang}`
+            document.querySelector('.language').appendChild(li)
+        }
+        
+        addLang("C++")
+        addLang("Typescript")
+
+        //writng the optimized way to append the child, here we dont need to traverse the whole tree to put the values 
+        function addLangOpti(lang){
+            let li = document.createElement('li')
+            li.appendChild(document.createTextNode(lang))
+            document.querySelector('.language').appendChild(li)
+
+        }
+        addLangOpti('MOJO')
+
+        // now to edit the values 
+        // to edit we first get what we want to edit 
+        let fourth = document.querySelector('li:nth-child(3)')
+        console.log(fourth)
+        let temp = document.createElement('li')
+        temp.textContent  = 'C#'
+        fourth.replaceWith(temp)
+        
+        // for removuing the last mojo 
+        let k = document.querySelector('li:nth-child(4)')
+        k.remove();
+
+       </script>
+       
+       
+    </main>
+    <footer>
+        <p>&copy; 2023 Sample Web Page</p>
+    </footer>
+</body>
+
+<script>
+     
+    
+</script>
+</html>

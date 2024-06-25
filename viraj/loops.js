@@ -1,7 +1,7 @@
 // for-of loop 
 
 // in array 
-let arr = [101,102,103]
+// let arr = [101,102,103]
 
 // for(const i of arr){
 //     console.log(i)
@@ -10,11 +10,11 @@ let arr = [101,102,103]
 
 // for objects 
 
-let obj  = {
-    a:21,
-    b:22,
-    c:23
-}
+// let obj  = {
+//     a:21,
+//     b:22,
+//     c:23
+// }
 
 // for(const [key,value] of obj ){
 //     console.log(`${key}: ${value}`)
@@ -24,21 +24,21 @@ let obj  = {
 
 // for map data structure 
 
-const temp_map = new Map();
+// const temp_map = new Map();
 
-temp_map.set('name','viraj')
-temp_map.set('id',21)
-temp_map.set('city','Pune')
+// temp_map.set('name','viraj')
+// temp_map.set('id',21)
+// temp_map.set('city','Pune')
 
-for(const [key,value] of temp_map){
-    // console.log(`${key}, ${value}`)
-}
+// for(const [key,value] of temp_map){
+//     // console.log(`${key}, ${value}`)
+// }
 
 // console.log(typeof temp_map ) //object
 
 // for strings 
 
-let str  = "hello world"
+// let str  = "hello world"
 
 // for(const i of str){
 //     console.log(i);
@@ -66,21 +66,21 @@ let str  = "hello world"
 
 
 // FOR ARRAYS 
-const programming = ["js", "rb", "py", "java", "cpp"]
+// const programming = ["js", "rb", "py", "java", "cpp"]
 
-for (const key in programming) {
-    // console.log(programming[key]);
-}
+// for (const key in programming) {
+//     // console.log(programming[key]);
+// }
 
-const map = new Map()
-map.set('IN', "India")
-map.set('USA', "United States of America")
-map.set('Fr', "France")
-map.set('IN', "India")
+// const map = new Map()
+// map.set('IN', "India")
+// map.set('USA', "United States of America")
+// map.set('Fr', "France")
+// map.set('IN', "India")
 
-for (const key in map) {
-    console.log(key);
-}
+// for (const key in map) {
+//     console.log(key);
+// }
 
 
 // *************FOR EACH LOOP  ****************
@@ -135,4 +135,39 @@ for (const key in map) {
 
 // it modifys the element in array and store them in its newly generated array 
 // it doesnt make changes to the original array 
+//************************************* */ REDUCE METHOD ************
+
+// let fname =" ";
+
+// let name = ['Viraj',"Rajendra","Mandlik"]
+
+// let Full_Name = name.reduce((acc,currval)=>acc +" "+ currval,fname)
+
+// console.log(Full_Name);
+
+// // acc:- accumulator ko starting ne pata nahi he ki starting me uski value kya he, so for that we give the intial value to it, the intial value here is fname which gets intially only stored in acc /
+
+
+// let user1 =[
+//     {
+//         id:21,
+//         name:"py",
+//         price:200
+//     },
+//     {
+//         id:22,
+//         name:"Java",
+//         price:789
+//     },
+//     {
+//         id:23,
+//         name:"C++",
+//         price:500
+//     },
+// ]
+
+// let priceToPay = user1.reduce((acc,currval)=>acc + currval.price , 0)
+
+// console.log(priceToPay)
+
 

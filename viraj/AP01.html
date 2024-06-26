@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sending and receiving the API request via AJAX</title>
+</head>
+<body>
+    <h1>Hello World..!</h1>
+    <script>
+        // URL of the API endpoint we're going to call
+        const url = 'https://api.github.com/users/virajmandlik';
+
+        // Create a new XMLHttpRequest object, which is used to interact with servers
+        const shaktiman = new XMLHttpRequest();
+
+        // Initialize a request to the specified URL with the GET method
+        // true means the request is asynchronous
+        shaktiman.open('GET', url, true);
+
+        // Define a function to be called whenever the readyState property changes
+        shaktiman.onreadystatechange = function() {
+            // Log the current state of the request to the console
+            console.log(shaktiman.readyState);
+
+            // Check if the request is complete (readyState 4 means the operation is complete)
+            if (shaktiman.readyState == 4) {
+                // Parse the response text from JSON string to a JavaScript object
+                let res_obj = JSON.parse(this.responseText);
+
+                // Log the type of the data (it should be an object)
+                console.log(typeof res_obj);
+
+                // Log the username of the user
+                console.log('The username is ', res_obj.login);
+            }
+        }
+
+        // Send the request
+        shaktiman.send();
+
+        /* Analogy:
+           - URL of the API endpoint = Address of the library (url)
+           - XMLHttpRequest object = Envelope and paper (shaktiman)
+           - open method = Write and address the letter (shaktiman.open)
+           - onreadystatechange = Check mailbox regularly (shaktiman.onreadystatechange)
+           - readyState 4 = Letter has arrived (shaktiman.readyState == 4)
+           - JSON.parse = Open and read the letter (JSON.parse(this.responseText))
+           - Log data = Find specific information in the letter (console.log)
+           - send method = Send the letter (shaktiman.send)
+        */
+    </script>
+</body>
+</html>

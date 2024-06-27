@@ -3,10 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sending and receiving the API request via AJAX</title>
+    <title>User Profile Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .card h2 {
+            margin: 20px 0 0;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World..!</h1>
+    <div class="card">
+        <img id="profile-image" src="" alt="Profile Image">
+        <h2 id="username"></h2>
+        <h2 id="created-date"></h2>
+    </div>
+
     <script>
         // URL of the API endpoint we're going to call
         const url = 'https://api.github.com/users/virajmandlik';
@@ -20,35 +64,28 @@
 
         // Define a function to be called whenever the readyState property changes
         shaktiman.onreadystatechange = function() {
-            // Log the current state of the request to the console
-            console.log(shaktiman.readyState);
-
             // Check if the request is complete (readyState 4 means the operation is complete)
-            if (shaktiman.readyState == 4) {
+            if (shaktiman.readyState == 4 && shaktiman.status == 200) {
                 // Parse the response text from JSON string to a JavaScript object
                 let res_obj = JSON.parse(this.responseText);
 
-                // Log the type of the data (it should be an object)
-                console.log(typeof res_obj);
+                // Update the card with the user data
+                document.getElementById('profile-image').src = res_obj.avatar_url;
+                document.getElementById('username').textContent = res_obj.login;
 
-                // Log the username of the user
-                console.log('The username is ', res_obj.login);
+                // Format the account creation date to a more readable format
+                let date = new Date(res_obj.created_at);
+                let formattedDate = date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                document.getElementById('created-date').textContent = `Account created on: ${formattedDate}`;
             }
         }
 
         // Send the request
         shaktiman.send();
-
-        /* Analogy:
-           - URL of the API endpoint = Address of the library (url)
-           - XMLHttpRequest object = Envelope and paper (shaktiman)
-           - open method = Write and address the letter (shaktiman.open)
-           - onreadystatechange = Check mailbox regularly (shaktiman.onreadystatechange)
-           - readyState 4 = Letter has arrived (shaktiman.readyState == 4)
-           - JSON.parse = Open and read the letter (JSON.parse(this.responseText))
-           - Log data = Find specific information in the letter (console.log)
-           - send method = Send the letter (shaktiman.send)
-        */
     </script>
 </body>
 </html>
